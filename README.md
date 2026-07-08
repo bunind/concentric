@@ -1,8 +1,6 @@
 # /concentric
 
-A skill that generates UI components at a consistent concentric scale. Spacing, radius, gaps, icon sizes, and font size all come from the container's height, so every size shares the same proportions with no per-size tweaking. Nesting stays consistent with the scale: a badge inside a button inside a toolbar keeps every corner aligned.
-
-The skill audits designs too: give it an existing component and it checks the geometry against the concentric principle.
+A skill that generates UI components at a consistent concentric scale. Spacing, radius, gaps, icon sizes, and font size all come from the container's height, so every component size shares the same proportions on a single scale. The skill audits designs too: give it an existing component and it checks the geometry against the concentric principle.
 
 ## Install
 
