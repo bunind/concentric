@@ -1,8 +1,10 @@
 # /concentric
 
-A skill that generates UI components at a consistent concentric scale. Spacing, radius, gaps, icon sizes, and font size all come from the container's height, so every size shares the same proportions with no per-size tweaking. Nesting stays consistent with the scale: a badge inside a button inside a toolbar keeps every corner aligned.
+A skill that generates UI components at a consistent concentric scale.
 
-The skill audits designs too: give it an existing component and it checks the geometry against the concentric principle.
+/concentric uses the default container's height to generate spacing, radius, gaps, icons, and type, so every size stays in proportion without hand-tuning. Nested pieces stay aligned too: a badge in a button in a toolbar.
+
+It also audits: point it at a component and it checks the geometry against the system.
 
 ## Install
 
@@ -12,18 +14,19 @@ git clone https://github.com/bunind/concentric ~/.claude/skills/concentric
 
 ## Usage
 
-```
-/concentric button lg
-/concentric segmented control with 3 options, size md
-/concentric chip xs in Figma
-analyze this component using /concentric and suggest improvements
-```
+> /concentric button lg
+>
+> /concentric segmented control with 3 options, size md
+>
+> /concentric chip xs in Figma
+>
+> analyze this component using /concentric and suggest improvements
 
-It outputs to three targets: Figma (via the Figma MCP), CSS/HTML (with live `calc()` derivations), and DTCG design tokens.
+Outputs to Figma (via the Figma MCP), CSS/HTML with live `calc()`, or DTCG tokens.
 
 ## How it works
 
-Name a component and a size, and the skill builds it with every value derived from the height. Ask for `button md` and you get a 32px button with its padding, radius, gaps, and text all scaled to fit. Ask for several sizes and you get the whole set, every button in the same proportions. A size is a name or a raw pixel height:
+Ask the skill for `button md` and you get a 32px button with concentric spacing, radius, gaps, and text. Ask for several sizes to get the whole set in the same proportions. A size is a name or a raw pixel height:
 
 | Name    | Alias | H  |
 |---------|-------|----|
@@ -35,7 +38,7 @@ Name a component and a size, and the skill builds it with every value derived fr
 | XLarge  | xl    | 48 |
 | 2XLarge | 2xl   | 52 |
 
-Under the hood, every value comes from the height H through a base unit `u = H/12`:
+The concentric principle uses the container's height to do the math. Every value is a multiple of the base unit `u = H/12`:
 
 | Value        | Formula     | At H=24 |
 |--------------|-------------|---------|
@@ -48,7 +51,7 @@ Under the hood, every value comes from the height H through a base unit `u = H/1
 
 ## Audit
 
-Ask for an analysis and you get a drift table (`property | expected | actual | drift`) showing where each value drifts from the system, plus the nearest concentric spec to apply. It only reports and suggests; it never edits anything itself.
+Ask for an analysis and you get a drift table (`property | expected | actual | drift`) plus the nearest concentric spec to apply. It reports and suggests; it never edits.
 
 ## License
 
