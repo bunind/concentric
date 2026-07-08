@@ -40,19 +40,21 @@ Ask the skill for `button md` and you get a 32px button with concentric spacing,
 
 The concentric principle uses the container's height to do the math. Every value is a multiple of the base unit `u = H/12`:
 
-| Value        | Formula     | At H=24 |
-|--------------|-------------|---------|
-| padding      | 3u          | 6       |
-| content band | 6u          | 12      |
-| gap          | 1u          | 2       |
-| radius       | H/2         | 12      |
-| child radius | R − p       | 6       |
-| font         | round(5.6u) | 11      |
+| Value          | Formula     | At H=24 |
+|----------------|-------------|---------|
+| padding        | 3u          | 6       |
+| content height | 6u          | 12      |
+| gap            | 1u          | 2       |
+| radius         | H/2         | 12      |
+| nested radius  | R − p       | 6       |
+| font           | round(5.6u) | 11      |
 
 ## Audit
 
-Ask for an analysis and you get a drift table (`property | expected | actual | drift`) plus the nearest concentric spec to apply. It reports and suggests; it never edits.
+Ask for an analysis and you get a drift table (`property | expected | actual | drift`) plus the nearest concentric spec to apply. The skill reports and suggests—never edits on its own.
 
 ## License
 
-MIT © Dmitrii Bunin · [buninux.com](https://buninux.com)
+[MIT LICENSE](LICENSE)
+
+© 2026 Dmitrii Bunin — [BuninUX](https://buninux.com)
