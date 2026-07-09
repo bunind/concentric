@@ -25,26 +25,26 @@ Each component comes from a single request: a name and a size. `button sm` build
 
 A size can be a raw pixel height, or one of the default named sizes below:
 
-| Name           | Alias | H    |
-|----------------|-------|------|
-| 2XSmall        | 2xs   | 16   |
-| XSmall         | xs    | 20   |
-| Small          | sm    | 24   |
-| Medium         | md    | 32   |
-| Large          | lg    | 40   |
-| XLarge         | xl    | 48   |
-| 2XLarge        | 2xl   | 52   |
+| Name           | Alias   | H      |
+|----------------|---------|--------|
+| 2XSmall        | 2xs     | 16     |
+| XSmall         | xs      | 20     |
+| Small          | sm      | 24     |
+| Medium         | md      | 32     |
+| Large          | lg      | 40     |
+| XLarge         | xl      | 48     |
+| 2XLarge        | 2xl     | 52     |
 
 Every value is a multiple of the base unit `u = H/12`. At H=24, u is 2:
 
-| Value          | Formula     | At H=24 |
-|----------------|-------------|---------|
-| padding        | 3u          | 6       |
-| content height | 6u          | 12      |
-| gap            | 1u          | 2       |
-| radius         | H/2         | 12      |
-| nested radius  | R − p       | 6       |
-| font           | round(5.6u) | 11      |
+| Value          | Formula     | At H=24     |
+|----------------|-------------|-------------|
+| padding        | 3u          | 6           |
+| content height | 6u          | 12          |
+| gap            | 1u          | 2           |
+| radius         | H/2         | 12          |
+| nested radius  | R − p       | 6           |
+| font           | round(5.6u) | 11          |
 
 ## Audit
 
