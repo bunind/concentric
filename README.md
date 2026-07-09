@@ -13,8 +13,11 @@ git clone https://github.com/bunind/concentric ~/.claude/skills/concentric
 ## Usage
 
 > /concentric button lg
+
 > /concentric segmented control with 3 options, size md
+
 > /concentric chip xs in Figma
+
 > analyze this component using /concentric and suggest improvements
 
 Outputs to Figma (via the Figma MCP), CSS/HTML with live `calc()`, or DTCG tokens.
