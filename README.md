@@ -15,9 +15,9 @@ git clone https://github.com/bunind/concentric ~/.claude/skills/concentric
 - `/concentric button lg`
 - `/concentric segmented control with 3 options, size md`
 - `/concentric chip xs in Figma`
-- analyze this component using `/concentric` and suggest improvements
+- Analyze this component using `/concentric` and suggest improvements
 
-Outputs to Figma and Paper (via MCP), CSS/HTML with live `calc()`, or DTCG tokens.
+Outputs to Figma, Paper (via MCP), CSS/HTML with live `calc()`, or DTCG tokens.
 
 ## How it works
 
@@ -25,15 +25,15 @@ Each component comes from a single request: a name and a size. `button sm` build
 
 A size can be a raw pixel height, or one of the default named sizes below:
 
-| Name    | Alias | H  |
-|---------|-------|----|
-| 2XSmall | 2xs   | 16 |
-| XSmall  | xs    | 20 |
-| Small   | sm    | 24 |
-| Medium  | md    | 32 |
-| Large   | lg    | 40 |
-| XLarge  | xl    | 48 |
-| 2XLarge | 2xl   | 52 |
+| Name           | Alias | H  |
+|-----------|-------|----|
+| 2XSmall   | 2xs   | 16 |
+| XSmall    | xs    | 20 |
+| Small     | sm    | 24 |
+| Medium    | md    | 32 |
+| Large     | lg    | 40 |
+| XLarge    | xl    | 48 |
+| 2XLarge   | 2xl   | 52 |
 
 Every value is a multiple of the base unit `u = H/12`. At H=24, u is 2:
 
