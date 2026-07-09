@@ -21,6 +21,8 @@ Outputs to Figma, Paper (via MCP), CSS/HTML with live `calc()`, or DTCG tokens.
 
 ## How it works
 
+<video src="https://github.com/bunind/concentric/raw/main/concentric-test.mp4" controls muted></video>
+
 Each component comes from a single request: a name and a size. `button sm` builds a 24px button with concentric padding, radius, gaps, and text. The same request across the ramp produces a matching set, every size in the same proportions. Change H and every size follows, so you never have to hand-tweak spacing and radius per size.
 
 A size can be a raw pixel height, or one of the default named sizes below:
