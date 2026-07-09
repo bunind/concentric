@@ -1,10 +1,8 @@
 # /concentric
 
-A skill that generates UI components at a consistent concentric scale.
+/concentric generates UI components on a concentric scale, and audits existing ones against it.
 
-/concentric uses the default container's height to generate spacing, radius, gaps, icons, and type, so every size stays in proportion without hand-tuning. Nested pieces stay aligned too: a badge in a button in a toolbar.
-
-It also audits: point it at a component and it checks the geometry against the system.
+> Concentric scaling is a technique to build a set of components from a single number, the container's height (H). Every nested element shares the container's center, so gaps and proportions stay aligned at all sizes. Change H and every size follows, so you never hand-tweak spacing and radius per size.
 
 ## Install
 
@@ -15,18 +13,17 @@ git clone https://github.com/bunind/concentric ~/.claude/skills/concentric
 ## Usage
 
 > /concentric button lg
->
 > /concentric segmented control with 3 options, size md
->
 > /concentric chip xs in Figma
->
 > analyze this component using /concentric and suggest improvements
 
 Outputs to Figma (via the Figma MCP), CSS/HTML with live `calc()`, or DTCG tokens.
 
 ## How it works
 
-Ask the skill for `button md` and you get a 32px button with concentric spacing, radius, gaps, and text. Ask for several sizes to get the whole set in the same proportions. A size is a name or a raw pixel height:
+Each component comes from a single request: a name and a size. `button sm` builds a 24px button with concentric padding, radius, gaps, and text. The same request across the ramp produces a matching set, every size in the same proportions.
+
+A size can be a name or a raw pixel height:
 
 | Name    | Alias | H  |
 |---------|-------|----|
@@ -38,7 +35,7 @@ Ask the skill for `button md` and you get a 32px button with concentric spacing,
 | XLarge  | xl    | 48 |
 | 2XLarge | 2xl   | 52 |
 
-The concentric principle uses the container's height to do the math. Every value is a multiple of the base unit `u = H/12`:
+Every value is a multiple of the base unit `u = H/12`. At H=24, u is 2:
 
 | Value          | Formula     | At H=24 |
 |----------------|-------------|---------|
@@ -51,7 +48,7 @@ The concentric principle uses the container's height to do the math. Every value
 
 ## Audit
 
-Ask for an analysis and you get a drift table (`property | expected | actual | drift`) plus the nearest concentric spec to apply. The skill reports and suggests—never edits on its own.
+Point the skill at an existing component and it returns a drift table (`property | expected | actual | drift`) with the nearest concentric spec to apply. It reports and suggests, but never edits on its own.
 
 ## License
 
