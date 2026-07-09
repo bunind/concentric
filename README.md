@@ -1,6 +1,6 @@
 # /concentric
 
-/concentric generates UI components on a concentric scale, and audits existing ones against its principles.
+`/concentric` generates UI components on a concentric scale, and audits existing ones against its principles.
 
 > Concentric scaling is a technique to build components from a single value, the container's height (H). Every nested element shares the container's center, so spacing, elements, and proportions stay aligned at all sizes.
 
@@ -15,7 +15,7 @@ git clone https://github.com/bunind/concentric ~/.claude/skills/concentric
 - `/concentric button lg`
 - `/concentric segmented control with 3 options, size md`
 - `/concentric chip xs in Figma`
-- analyze this component using /concentric and suggest improvements
+- analyze this component using `/concentric` and suggest improvements
 
 Outputs to Figma and Paper (via MCP), CSS/HTML with live `calc()`, or DTCG tokens.
 
