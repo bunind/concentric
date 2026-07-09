@@ -25,7 +25,8 @@ only exception.
 |----------------|--------------------------------------|
 | base unit      | u = H/12                             |
 | padding p      | 3u spacious · 1u dense (see classes) |
-| content band   | 6u (icons, badges, nested items)     |
+| content band   | 6u (solid leaves: icons, dots, thumbs) |
+| text floor     | dense 8u · spacious 12u (min height to inset a text line) |
 | gap            | 1u between inline items              |
 | text inset     | 1u, on the text item's own wrapper   |
 | outer radius   | R = min(H/2, R_max)                  |
@@ -64,8 +65,9 @@ icon-only variant at that size.
 - **Child radius is R − p, never child/2.** The two agree only for pills. For squared corners compute R − p, clamped at 0.
 - **Two container classes.** Spacious (padding 3u): children are band content or independent components — button, chip, input, toolbar. Dense (padding 1u): children are the control's own states or internals — segments, tab items, toggle thumb, loader rail. Dense children stand H − 2u tall with radius R − 1u, and each is a full concentric component inside (own 3u padding, own text inset).
 - **Recursion runs down.** A slot inside the band is a concentric container with its own H = parent band. Re-apply every rule.
+- **Solid leaf vs content container.** Every band-child is one or the other. A **solid leaf** — icon, dot, thumb, avatar, single-glyph micro-badge, remove-✕ — has nothing to inset inside it: size it exactly to the band (6u), `min-width: band` for a circle, **padding 0**. Never add ad-hoc padding to reach a width; it pushes the leaf off the grid (a 6u circle becomes a 7u+ oval). A **content container** holds a text line or a nested component, and its content does not recurse (line-box stays 6u, font 5.6u), so it has a **height floor**: dense = 6u + 2·1u = **8u**, spacious = 6u + 2·3u = **12u**. Below its floor a container cannot inset its content — either grow the parent's band to the floor, or demote it to a solid leaf (content fills it, inset waived, and say so). Sizing a text element at band (6u) is the classic break: 6u < 8u, so the glyph fills it with zero breathing room.
 - **Recursion runs up.** A container holding components (toolbar, bar, row) is concentric too: its band = tallest child's H, so container H = child × 2, padding 3u, sibling gap 1u of the container. Smaller children center in the band. Never introduce a separate spacing scale between siblings.
-- **Type does not recurse.** Font size derives from the top-level H; nested children inherit it. Primary labels: Medium (500). Text inside dense items (badges, segments): Regular (400).
+- **Type does not recurse.** Font size derives from the top-level H; nested children inherit it. Primary labels: Medium (500). Text inside dense items (badges, segments): Regular (400). Because font, line-box (6u) and inset (1u) are top-level constants, a text-bearing slot has a height floor — it cannot shrink to band size and still inset its glyph (see Solid leaf vs content container).
 - **Touch targets.** Below H=24, note that an invisible hit area of at least 24px should wrap the component.
 - **Large radii.** Pills suit interactive elements at any H. For cards and panels above H=48, ask the user for R_max instead of silently emitting an egg.
 
@@ -81,7 +83,7 @@ Build these structures; the formulas supply every measurement.
 | input           | field( icon · text( placeholder ) · icon button, opt. )   |
 | segmented, tabs | dense track( segment × n ), each a full component         |
 | toggle          | dense track( thumb circle ), width ≈ 2 × thumb + 2u       |
-| badge           | dense pill at band size( digit, line height = height )    |
+| badge           | 1 glyph → solid leaf: band circle, padding 0, glyph fills, inset waived. Multi-char / roomy → content container: dense pill ≥ 8u, digit inset 1u |
 | toolbar, bar    | spacious container( components, centered in band )        |
 
 ## Audit mode
@@ -90,7 +92,7 @@ When asked to analyze or audit a component, or to suggest improvements:
 
 1. Measure the container's actual height H; compute u = H/12.
 2. Classify from the tallest child: child/H near 0.5 → spacious; above 0.7 → dense. A ratio between 0.55 and 0.7 fits neither class — report that as the finding.
-3. Compare every actual value against the class formulas: padding, gap, radius, child sizes, child radius (R − p), text inset, font, line height.
+3. Compare every actual value against the class formulas: padding, gap, radius, child sizes, child radius (R − p), text inset, font, line height. Flag any solid leaf whose width ≠ height ≠ band (padding has ovaled it), and any text-bearing slot sized below its floor (dense 8u · spacious 12u).
 4. Report a drift table — `property | expected | actual | drift` — and call out the two highest-impact drifts, one line each.
 5. Propose the nearest concentric spec: snap to the closest ramp size (or keep the exact H if intentional) and print its full derivation table, ready to apply.
 
@@ -119,3 +121,4 @@ why child radius must always be computed as R − p, never child/2.
 - Edit existing components during audits unless explicitly asked.
 - Touch color, elevation, or motion. Concentric governs geometry only.
 - Invent per-size overrides. If a value looks wrong at some H, flag it and propose retuning the named ratio globally (font k = 5.6/12, text inset, R_max).
+- Pad a solid leaf to reach a size. Set its width/height and center the content; padding on a leaf (icon, dot, single-glyph badge) breaks the band grid and ovals a circle.
