@@ -23,7 +23,7 @@ Outputs to Figma and Paper (via MCP), CSS/HTML with live `calc()`, or DTCG token
 
 Each component comes from a single request: a name and a size. `button sm` builds a 24px button with concentric padding, radius, gaps, and text. The same request across the ramp produces a matching set, every size in the same proportions. Change H and every size follows, so you never have to hand-tweak spacing and radius per size.
 
-A size can be a name or a raw pixel height:
+A size can be a raw pixel height, or one of the default named sizes below:
 
 | Name    | Alias | H  |
 |---------|-------|----|
