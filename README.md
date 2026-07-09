@@ -1,8 +1,8 @@
 # /concentric
 
-/concentric generates UI components on a concentric scale, and audits existing ones against it.
+/concentric generates UI components on a concentric scale, and audits existing ones against its principles.
 
-> Concentric scaling is a technique to build a set of components from a single number, the container's height (H). Every nested element shares the container's center, so gaps and proportions stay aligned at all sizes. Change H and every size follows, so you never hand-tweak spacing and radius per size.
+> Concentric scaling is a technique to build components from a single value, the container's height (H). Every nested element shares the container's center, so spacing, elements, and proportions stay aligned at all sizes.
 
 ## Install
 
@@ -12,19 +12,16 @@ git clone https://github.com/bunind/concentric ~/.claude/skills/concentric
 
 ## Usage
 
-> /concentric button lg
+- `/concentric button lg`
+- `/concentric segmented control with 3 options, size md`
+- `/concentric chip xs in Figma`
+- analyze this component using /concentric and suggest improvements
 
-> /concentric segmented control with 3 options, size md
-
-> /concentric chip xs in Figma
-
-> analyze this component using /concentric and suggest improvements
-
-Outputs to Figma (via the Figma MCP), CSS/HTML with live `calc()`, or DTCG tokens.
+Outputs to Figma and Paper (via MCP), CSS/HTML with live `calc()`, or DTCG tokens.
 
 ## How it works
 
-Each component comes from a single request: a name and a size. `button sm` builds a 24px button with concentric padding, radius, gaps, and text. The same request across the ramp produces a matching set, every size in the same proportions.
+Each component comes from a single request: a name and a size. `button sm` builds a 24px button with concentric padding, radius, gaps, and text. The same request across the ramp produces a matching set, every size in the same proportions. Change H and every size follows, so you never have to hand-tweak spacing and radius per size.
 
 A size can be a name or a raw pixel height:
 
