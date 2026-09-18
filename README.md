@@ -1,8 +1,8 @@
 # /concentric
 
-`/concentric` generates UI components on a concentric scale, and audits existing ones against its principles.
+`/concentric` skill generates UI components and elements on a concentric scale. The skill can audit existing elements against concentric principles.
 
-> Concentric scaling is a technique to build components from a single value, the container's height (H). Every nested element shares the container's center, so spacing, elements, and proportions stay aligned at all sizes.
+> Concentric scaling is a UI design technique for building components from a single value — the container's height (H). Every nested element shares the container's center, so spacing, text, and element proportions stay aligned at every size.
 
 ## Install
 
@@ -50,7 +50,7 @@ Every value is a multiple of the base unit `u = H/12`. At H=24, u is 2:
 
 ## Audit
 
-Point the skill at an existing component and it returns a drift table (`property | expected | actual | drift`) with the nearest concentric spec to apply. It reports and suggests, but never edits on its own.
+Point the skill at an existing component and it returns a drift table (`property | expected | actual | drift`) with the nearest concentric spec to apply. The audit only reports and suggests — it never edits unless asked.
 
 ## License
 
